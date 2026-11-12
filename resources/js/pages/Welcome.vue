@@ -9,7 +9,7 @@ import WelcomeFooter from '@/components/welcome/WelcomeFooter.vue';
 </script>
 
 <template>
-    <Head title="Welcome to BEAT" />
+    <Head title="Buguias Electronic Assessment Toolkit" />
 
     <div class="min-h-screen bg-background text-foreground">
         <WelcomeNavbar />

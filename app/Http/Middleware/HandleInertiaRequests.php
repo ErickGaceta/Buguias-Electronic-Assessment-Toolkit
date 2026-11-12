@@ -42,6 +42,13 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+            'modules' => $request->user()
+                ? collect(config('assessments'))
+                    ->filter(fn ($m) => $request->user()->user_type
+                        ->canAccess(\App\Enums\AssessmentLevel::from($m['level'])))
+                    ->map(fn ($m, $key) => ['key' => $key, 'name' => $m['name']])
+                    ->values()
+                : [],
         ];
     }
 }

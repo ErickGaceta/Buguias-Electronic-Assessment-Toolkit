@@ -24,6 +24,9 @@ defineProps<{
     status?: string;
     canResetPassword: boolean;
 }>();
+
+import { ref } from 'vue';
+const portal = ref<'barangay' | 'municipal'>('barangay');
 </script>
 
 <template>
@@ -46,6 +49,26 @@ defineProps<{
     >
         <div class="grid gap-6">
             <div class="grid gap-2">
+                <input type="hidden" name="portal" :value="portal" />
+                <div class="grid grid-cols-2 gap-2 rounded-lg bg-muted p-1">
+                    <button
+                        v-for="p in [
+                            { value: 'barangay', label: 'Barangay Staff' },
+                            { value: 'municipal', label: 'Municipal Staff' },
+                        ]"
+                        :key="p.value"
+                        type="button"
+                        @click="portal = p.value as typeof portal"
+                        :class="[
+                            'rounded-md px-3 py-2 text-sm font-medium transition',
+                            portal === p.value
+                                ? 'bg-background shadow-sm text-foreground'
+                                : 'text-muted-foreground hover:text-foreground',
+                        ]"
+                    >
+                        {{ p.label }}
+                    </button>
+                </div>
                 <Label for="email">Email address</Label>
                 <Input
                     id="email"

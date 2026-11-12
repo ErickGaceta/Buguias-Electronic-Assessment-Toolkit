@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -26,6 +25,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
     'designation',
     'position',
     'office_name',
+    'is_active',
 ])]
 #[Hidden([
     'password',
@@ -44,6 +44,8 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'user_type' => \App\Enums\UserType::class,
+            'is_active' => 'boolean',
         ];
     }
 

@@ -108,9 +108,10 @@ import { login } from '@/routes';
                     <div class="p-5">
                         <div class="flex items-center gap-3">
                             <div
-                                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"
-                            >
-                                <span class="font-bold">DILG</span>
+                                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                                <img
+                                    src="/favicon.svg"
+                                    alt="DILG Seal" />
                             </div>
 
                             <div>
